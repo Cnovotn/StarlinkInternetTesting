@@ -2,6 +2,7 @@ from datetime import *
 from os.path import exists
 import csv
 import speedtest
+import math
 
 def collectData(st):
     download = st.download()
@@ -30,12 +31,22 @@ def writeData(row_data):
         createCSV(row_data[0])
         writeData(row_data)
 
+# Code from https://stackoverflow.com/questions/5194057/better-way-to-convert-file-sizes-in-python
+def convert_size(size_bytes):
+   if size_bytes == 0:
+       return "0B"
+   size_name = ("B/PS", "KB/PS", "MB/PS", "GB/PS", "TB/PS", "PB/PS", "EB/PS", "ZB/PS", "YB/PS")
+   i = int(math.floor(math.log(size_bytes, 1024)))
+   p = math.pow(1024, i)
+   s = round(size_bytes / p, 2)
+   return "%s %s" % (s, size_name[i])
+
 def formatData(download, upload, ping):
     date_time = (str(datetime.today()))
     date_time_split = date_time.split()
     date = date_time_split[0]
     time = date_time_split[1]
-    row_data = [date, time, download, upload, ping]
+    row_data = [date, time, convert_size(download), convert_size(upload), ping]
     return row_data
 
 def main():
@@ -46,7 +57,6 @@ def main():
         bad_row = formatData('N/A','N/A','N/A')
         writeData(bad_row)
 
-main()
-# if __name__ == '__main__':
-#     # execute only if run as the entry point into the program
-#     main()
+if __name__ == '__main__':
+    # execute only if run as the entry point into the program
+    main()

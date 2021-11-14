@@ -4,4 +4,4 @@
 # Python script that needs to be run. 
 # Should wait for this script to finish running before running it again
 
-python3 piScript.py
+python3 speedtest_script.py
