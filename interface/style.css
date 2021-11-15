@@ -2,3 +2,11 @@
     background: black;
     color: white;
 }
+.container{
+    width: 80%;
+    margin: 10%;
+    padding: 2%
+}
+#navbar{
+    justify-content: center;
+}
