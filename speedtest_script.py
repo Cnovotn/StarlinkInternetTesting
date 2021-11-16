@@ -71,7 +71,7 @@ def main():
         st = speedtest.Speedtest()
         collectData(st)
     except:
-        bad_row = formatData('N/A','N/A','N/A')
+        bad_row = formatData(-1,-1,-1)
         writeToDatabase(bad_row)
 
 if __name__ == '__main__':
