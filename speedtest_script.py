@@ -1,4 +1,5 @@
 from datetime import *
+from time import strftime
 from os.path import exists
 import csv
 import speedtest
@@ -56,10 +57,10 @@ def convert_size(size_bytes):
     i = int(math.floor(math.log(size_bytes, 1024)))
     p = math.pow(1024, i)
     s = round(size_bytes / p, 2)
-    return "%s %s" % (s, size_name[i])
+    return "%s" % (s)
 
 def formatData(download, upload, ping):
-    date_time = (str(datetime.today()))
+    date_time = (str(datetime.today().replace(microsecond=0)))
     date_time_split = date_time.split()
     date = date_time_split[0]
     time = date_time_split[1]
