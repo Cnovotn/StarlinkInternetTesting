@@ -8,11 +8,15 @@ import mysql.connector
 from mysql.connector import errorcode
 
 def connectToMYSQL():
+  hosts = {
+    "ballard" : "10.0.0.150",
+    "kenmore" : "192.168.254.49"
+  }
   try:
     config = {
       'user': 'user',
       'password': 'raspberry',
-      'host': '10.0.0.150',
+      'host': hosts['kenmore'],
       'port': 8457,
       'database': 'internet_testing',
       'raise_on_warnings': True
